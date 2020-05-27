@@ -11,7 +11,7 @@ public class Venda {
 	private int formaPagto;
 	private Date dataVenda;
 
-	public Venda(int numVenda, Cliente cliente, Vendedor vendedor, ArrayList<ItemVenda> vendaItens, int formaPagto,
+	public Venda(Cliente cliente, Vendedor vendedor, ArrayList<ItemVenda> vendaItens, int formaPagto,
 			Date dataVenda) {
 		this.numVenda = numVenda;
 		this.cliente = cliente;

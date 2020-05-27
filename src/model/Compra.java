@@ -9,8 +9,7 @@ public class Compra {
 	private ArrayList<ItemCompra> compraItens;
 	private Date dataCompra;
 
-	public Compra(int numCompra, Fornecedor fornecedor, ArrayList<ItemCompra> compraItens, Date dataCompra) {
-		this.numCompra = numCompra;
+	public Compra(Fornecedor fornecedor, ArrayList<ItemCompra> compraItens, Date dataCompra) {
 		this.fornecedor = fornecedor;
 		this.compraItens = compraItens;
 		this.dataCompra = dataCompra;
