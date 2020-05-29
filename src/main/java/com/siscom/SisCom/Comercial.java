@@ -5,13 +5,15 @@ import java.util.Collections;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.siscom.model.*;
 
-@Controller
+@RestController
 public class Comercial {
 
 	private ArrayList<Pessoa> pessoas;
@@ -46,6 +48,7 @@ public class Comercial {
 		this.pessoas.add(pessoa);
 	}
 
+	@DeleteMapping("/pessoa/{id}")
 	public void removerPessoa(Pessoa pessoa) throws SisComException {
 		if (pessoa instanceof Fornecedor && this.isFornecedorHasCompra((Fornecedor) pessoa)) {
 			throw new SisComException("O fornecedor tem compra cadastrada!");

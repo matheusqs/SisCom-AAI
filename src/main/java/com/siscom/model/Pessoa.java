@@ -2,16 +2,27 @@ package com.siscom.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public abstract class Pessoa implements Comparable<Pessoa> {
 
-	private int codigo; // TODO tem que ser sequencial
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
 	private String nome;
 	private String telefones;
 	private String email;
 	private Date dataCad;
+	
+	protected Pessoa() {}
 
 	public Pessoa(int codigo, String nome, String telefones, String email, Date dataCad) {
-		this.codigo = codigo;
+		this.id = codigo;
 		this.nome = nome;
 		this.telefones = telefones;
 		this.email = email;
@@ -19,11 +30,11 @@ public abstract class Pessoa implements Comparable<Pessoa> {
 	}
 
 	public int getCodigo() {
-		return codigo;
+		return id;
 	}
 
 	public void setCodigo(int codigo) {
-		this.codigo = codigo;
+		this.id = codigo;
 	}
 
 	public String getNome() {
@@ -66,7 +77,7 @@ public abstract class Pessoa implements Comparable<Pessoa> {
 
 	@Override
 	public String toString() {
-		return "Pessoa [codigo=" + codigo + ", nome=" + nome + ", telefones=" + telefones + ", email=" + email
+		return "Pessoa [codigo=" + id + ", nome=" + nome + ", telefones=" + telefones + ", email=" + email
 				+ ", dataCad=" + dataCad + "]";
 	}
 
