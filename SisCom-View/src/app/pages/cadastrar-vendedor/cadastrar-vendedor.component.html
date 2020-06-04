@@ -1,0 +1,32 @@
+<section>
+    <h1>Cadastrar Vendedor</h1>
+    <form [formGroup]="vendedor">
+        <mat-form-field appearance="fill">
+            <mat-label>Nome</mat-label>
+            <input matInput placeholder="Fulano de tal" formControlName="nome" required>
+            <mat-error *ngIf="vendedor.controls.nome.invalid">Por favor preencha o nome.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="pat@example.com" formControlName="email" required>
+            <mat-error *ngIf="vendedor.controls.email.invalid">Por favor preencha o email.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>CPF</mat-label>
+            <input matInput placeholder="111.111.111-11" formControlName="cpf" required>
+            <mat-error *ngIf="vendedor.controls.cpf.invalid">Por favor preencha o cpf.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="(99) 99999-9999" formControlName="telefone" required>
+            <mat-error *ngIf="vendedor.controls.cpf.invalid">Por favor preencha o cpf.</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Meta mensal</mat-label>
+            <input matInput type="number" formControlName="metaMensal" required>
+            <span matPrefix>$&nbsp;</span>
+            <span matSuffix>.00</span>
+        </mat-form-field>
+    </form>
+    <button mat-flat-button color="primary" (click)="cadastrarVendedor()">Cadastrar</button>
+</section>
