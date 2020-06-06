@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { VendedorService } from 'src/app/core/services/vendedor.service';
 import { Vendedor } from 'src/app/core/models/vendedor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-vendedor',
@@ -11,7 +12,12 @@ import { Vendedor } from 'src/app/core/models/vendedor';
 export class CadastrarVendedorComponent implements OnInit {
   public vendedor: FormGroup;
 
-  constructor(private vendedorService: VendedorService) {
+  constructor(
+    private vendedorService: VendedorService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
     this.vendedor = new FormGroup({
       nome: new FormControl(''),
       telefone: new FormControl(''),
@@ -21,13 +27,17 @@ export class CadastrarVendedorComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
-
   public cadastrarVendedor() {
     this.vendedorService
       .cadastrarVendedor(this.vendedor.value as Vendedor)
       .subscribe((response) => {
         console.log(response);
       });
+
+    this.goBack();
+  }
+
+  public goBack() {
+    this.router.navigate(['/']);
   }
 }

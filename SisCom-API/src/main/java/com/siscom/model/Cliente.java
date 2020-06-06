@@ -12,9 +12,9 @@ public class Cliente extends Pessoa {
 	private String cpf;
 	private double limiteCredito;
 
-	public Cliente(int codigo, String nome, String telefones, String email, Date dataCad, String cpf,
+	public Cliente(int codigo, String nome, String telefone, String email, Date dataCad, String cpf,
 			double limiteCredito) {
-		super(codigo, nome, telefones, email, dataCad);
+		super(codigo, nome, telefone, email, dataCad);
 		this.cpf = cpf;
 		this.limiteCredito = limiteCredito;
 	}

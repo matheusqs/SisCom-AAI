@@ -11,9 +11,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ListarVendedorComponent } from './pages/listar-vendedor/listar-vendedor.component';
+import {MatTableModule} from '@angular/material/table';
+import { PageTemplateComponent } from './shared/components/page-template/page-template.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import { CadastrarFornecedorComponent } from './pages/cadastrar-fornecedor/cadastrar-fornecedor.component';
+import { CadastrarClienteComponent } from './pages/cadastrar-cliente/cadastrar-cliente.component';
+import { ListarClienteComponent } from './pages/listar-cliente/listar-cliente.component';
+import { ListarFornecedorComponent } from './pages/listar-fornecedor/listar-fornecedor.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, CadastrarVendedorComponent],
+  declarations: [AppComponent, DashboardComponent, CadastrarVendedorComponent, ListarVendedorComponent, PageTemplateComponent, CadastrarFornecedorComponent, CadastrarClienteComponent, ListarClienteComponent, ListarFornecedorComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +32,9 @@ import {MatInputModule} from '@angular/material/input';
     MatInputModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatListModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

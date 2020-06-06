@@ -1,0 +1,35 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Cadastrar Fornecedor">
+    <section class="content">
+        <h4 class="content__subtitle">Preencha as informações do fornecedor:</h4>
+        <form [formGroup]="fornecedor" class="content__form">
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Exemplo Ltda." formControlName="nome" required>
+                <mat-error *ngIf="fornecedor.controls.nome.invalid">Por favor preencha o nome.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="fornecedor.controls.email.invalid">Por favor preencha o email.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>CNPJ</mat-label>
+                <input matInput placeholder="11.111.111/1111-00" formControlName="cnpj" required>
+                <mat-error *ngIf="fornecedor.controls.cnpj.invalid">Por favor preencha o cnpj.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <input matInput placeholder="(99) 99999-9999" formControlName="telefone" required>
+                <mat-error *ngIf="fornecedor.controls.telefone.invalid">Por favor preencha o telefone.</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Nome de Contato</mat-label>
+                <input matInput placeholder="Exemplo de nome" formControlName="nomeContato" required>
+                <mat-error *ngIf="fornecedor.controls.nomeContato.invalid">Por favor preencha o nome de contato.
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <button mat-flat-button class="content__button" color="primary"
+            (click)="cadastrarFornecedor()">Cadastrar</button>
+    </section>
+</app-page-template>

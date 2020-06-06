@@ -11,9 +11,9 @@ public class Fornecedor extends Pessoa {
 	private String cnpj;
 	private String nomeContato;
 
-	public Fornecedor(int codigo, String nome, String telefones, String email, Date dataCad, String cnpj,
+	public Fornecedor(int codigo, String nome, String telefone, String email, Date dataCad, String cnpj,
 			String nomeContato) {
-		super(codigo, nome, telefones, email, dataCad);
+		super(codigo, nome, telefone, email, dataCad);
 		this.cnpj = cnpj;
 		this.nomeContato = nomeContato;
 	}

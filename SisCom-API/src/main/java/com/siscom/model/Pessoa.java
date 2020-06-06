@@ -15,16 +15,16 @@ public abstract class Pessoa implements Comparable<Pessoa> {
 	private int id;
 	
 	private String nome;
-	private String telefones;
+	private String telefone;
 	private String email;
 	private Date dataCad;
 	
 	protected Pessoa() {}
 
-	public Pessoa(int codigo, String nome, String telefones, String email, Date dataCad) {
+	public Pessoa(int codigo, String nome, String telefone, String email, Date dataCad) {
 		this.id = codigo;
 		this.nome = nome;
-		this.telefones = telefones;
+		this.telefone = telefone;
 		this.email = email;
 		this.dataCad = dataCad;
 	}
@@ -45,12 +45,12 @@ public abstract class Pessoa implements Comparable<Pessoa> {
 		this.nome = nome;
 	}
 
-	public String getTelefones() {
-		return telefones;
+	public String getTelefone() {
+		return telefone;
 	}
 
-	public void setTelefones(String telefones) {
-		this.telefones = telefones;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getEmail() {
@@ -77,7 +77,7 @@ public abstract class Pessoa implements Comparable<Pessoa> {
 
 	@Override
 	public String toString() {
-		return "Pessoa [codigo=" + id + ", nome=" + nome + ", telefones=" + telefones + ", email=" + email
+		return "Pessoa [codigo=" + id + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email
 				+ ", dataCad=" + dataCad + "]";
 	}
 

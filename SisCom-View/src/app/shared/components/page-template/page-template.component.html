@@ -1,0 +1,9 @@
+<section class="container">
+    <header class="container-header">
+        <button mat-flat-button (click)="goBack()" color="accent" class="container-header__button">Voltar</button>
+        <h1 class="container-header__title">{{title}}</h1>
+    </header>
+    <section>
+        <ng-content></ng-content>
+    </section>
+</section>

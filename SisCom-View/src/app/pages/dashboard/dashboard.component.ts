@@ -13,8 +13,4 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  public navCadastrarVendedor() {
-    this.router.navigate(['/cadastrar-vendedor']);
-  }
-
 }

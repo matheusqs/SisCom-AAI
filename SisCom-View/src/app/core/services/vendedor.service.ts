@@ -10,6 +10,10 @@ export class VendedorService {
   constructor(private http: HttpClient) { }
 
   public cadastrarVendedor(vendedor: Vendedor) {
-    return this.http.post('localhost:8080/pessoa', vendedor);
+    return this.http.post('http://localhost:8080/vendedor', vendedor);
+  }
+
+  public getTodosVendedores() {
+    return this.http.get<Vendedor[]>('http://localhost:8080/vendedores');
   }
 }

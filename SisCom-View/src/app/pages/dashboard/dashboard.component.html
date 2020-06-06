@@ -1,10 +1,21 @@
 <section class="container">
     <h1>SisCom</h1>
-    <section class="container-list">
-        <button mat-flat-button color="primary" (click)="navCadastrarVendedor()">Cadastrar novo Vendedor</button>
-        <button mat-flat-button color="primary">Cadastrar novo Cliente</button>
-        <button mat-flat-button color="primary">Cadastrar novo Fornecedor</button>
-        <button mat-flat-button color="accent">Cadastrar Venda</button>
-        <button mat-flat-button color="accent">Cadastrar Compra</button>
-    </section>
+    <mat-list>
+        <section class="container-list">
+            <button routerLink="/" mat-flat-button color="primary">Cadastrar Venda</button>
+            <button routerLink="/" mat-flat-button color="primary">Cadastrar Compra</button>
+        </section>
+        <mat-divider></mat-divider>
+        <section class="container-list">
+            <button routerLink="/cadastrar/vendedor" mat-flat-button color="accent">Cadastrar novo Vendedor</button>
+            <button routerLink="/cadastrar/fornecedor" mat-flat-button color="accent">Cadastrar novo Fornecedor</button>
+            <button routerLink="/cadastrar/cliente" mat-flat-button color="accent">Cadastrar novo Cliente</button>
+        </section>
+        <mat-divider></mat-divider>
+        <section class="container-list">
+            <button routerLink="/listar/vendedores" mat-flat-button color="warn">Listar vendedores</button>
+            <button routerLink="/listar/fornecedores" mat-flat-button color="warn">Listar fornecedores</button>
+            <button routerLink="/listar/clientes" mat-flat-button color="warn">Listar clientes</button>
+        </section>
+    </mat-list>
 </section>

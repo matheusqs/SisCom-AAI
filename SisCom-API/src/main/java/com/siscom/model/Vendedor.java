@@ -11,9 +11,9 @@ public class Vendedor extends Pessoa {
 	private String cpf;
 	private double metaMensal;
 
-	public Vendedor(int codigo, String nome, String telefones, String email, Date dataCad, String cpf,
+	public Vendedor(int codigo, String nome, String telefone, String email, Date dataCad, String cpf,
 			double metaMensal) {
-		super(codigo, nome, telefones, email, dataCad);
+		super(codigo, nome, telefone, email, dataCad);
 		this.cpf = cpf;
 		this.metaMensal = metaMensal;
 	}

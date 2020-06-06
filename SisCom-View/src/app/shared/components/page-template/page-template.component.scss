@@ -1,0 +1,20 @@
+.container {
+  height: 100%;
+
+  & > * {
+    padding: 16px;
+  }
+}
+
+.container-header {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    margin-right: 16px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+}

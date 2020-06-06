@@ -1,6 +1,10 @@
 package com.siscom.model;
 
 public class SisComException extends Exception {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4876715937832092922L;
 	private String nomeProduto;
 	private int estoque;
 	private String mensagemErro;
@@ -12,6 +16,7 @@ public class SisComException extends Exception {
 	}
 
 	public SisComException(String mensagemErro) {
+		super(mensagemErro);
 		this.mensagemErro = mensagemErro;
 	}
 

@@ -5,9 +5,11 @@ import java.util.Collections;
 import java.util.Date;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,29 +18,46 @@ import com.siscom.model.*;
 @RestController
 public class Comercial {
 
-	private ArrayList<Pessoa> pessoas;
-	private ArrayList<Produto> produtos;
-	private ArrayList<Compra> compras;
-	private ArrayList<Venda> vendas;
+	private ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
+	private ArrayList<Produto> produtos = new ArrayList<Produto>();
+	private ArrayList<Compra> compras = new ArrayList<Compra>();
+	private ArrayList<Venda> vendas = new ArrayList<Venda>();
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/vendedor")
+	public void postVendedor(@RequestBody Vendedor vendedor) throws SisComException {
+		this.inserirPessoa(vendedor);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/cliente")
+	public void postCliente(@RequestBody Cliente cliente) throws SisComException {
+		this.inserirPessoa(cliente);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PostMapping("/fornecedor")
+	public void postFornecedor(@RequestBody Fornecedor fornecedor) throws SisComException {
+		this.inserirPessoa(fornecedor);
+	}
 
-	@PostMapping("/pessoa")
-	public void inserirPessoa(@RequestParam(value = "pessoa") Pessoa pessoa) throws SisComException {
+	public void inserirPessoa(@RequestBody Pessoa pessoa) throws SisComException {
 		if (pessoa instanceof Cliente) {
 			Cliente pessoaEncontrada = this.findClienteByCpf(((Cliente) pessoa).getCpf());
 
-			if (pessoaEncontrada == null) {
+			if (pessoaEncontrada != null) {
 				throw new SisComException("Ja existe um cliente cadastrado com esse CPF!");
 			}
 		} else if (pessoa instanceof Fornecedor) {
 			Fornecedor pessoaEncontrada = this.findFornecedorByCnpj(((Fornecedor) pessoa).getCnpj());
 
-			if (pessoaEncontrada == null) {
+			if (pessoaEncontrada != null) {
 				throw new SisComException("Ja existe um fornecedor cadastrado com esse CNPJ!");
 			}
 		} else if (pessoa instanceof Vendedor) {
 			Vendedor pessoaEncontrada = this.findVendedorByCpf(((Vendedor) pessoa).getCpf());
 
-			if (pessoaEncontrada == null) {
+			if (pessoaEncontrada != null) {
 				throw new SisComException("Ja existe um vendedor cadastrado com esse CPF!");
 			} else if (((Vendedor) pessoa).getMetaMensal() <= 0) {
 				throw new SisComException("O vendedor tem que ter meta mensal maior que zero!");
@@ -113,6 +132,8 @@ public class Comercial {
 		this.produtos.remove(produto);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/clientes")
 	public ArrayList<Cliente> getClientesOrdemAlfabetica() {
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
@@ -126,6 +147,8 @@ public class Comercial {
 		return clientes;
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/fornecedores")
 	public ArrayList<Fornecedor> getFornecedoresOremAlfabetica() {
 		ArrayList<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 
@@ -139,6 +162,9 @@ public class Comercial {
 		return fornecedores;
 	}
 
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("/vendedores")
 	public ArrayList<Vendedor> getVendedoresOremAlfabetica() {
 		ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
 

@@ -1,0 +1,36 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Listar fornecedores">
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="position">
+            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nomeContato">
+            <mat-header-cell *matHeaderCellDef> Nome de Contato </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nomeContato}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cnpj">
+            <mat-header-cell *matHeaderCellDef> Cnpj </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cnpj}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="telefone">
+            <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.telefone}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</app-page-template>
