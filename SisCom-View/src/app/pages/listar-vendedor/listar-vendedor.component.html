@@ -1,10 +1,5 @@
 <app-page-template [goBack]="goBack.bind(this)" title="Listar vendedores">
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container>
-
         <ng-container matColumnDef="nome">
             <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
@@ -12,7 +7,8 @@
 
         <ng-container matColumnDef="meta">
             <mat-header-cell *matHeaderCellDef> Meta </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.metaMensal}} </mat-cell>
+            <mat-cell *matCellDef="let element"> {{element.metaMensal | currency:'CAD':'symbol-narrow':'4.2-2'}}
+            </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="email">
@@ -28,6 +24,20 @@
         <ng-container matColumnDef="telefone">
             <mat-header-cell *matHeaderCellDef> Telefone </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.telefone}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataCad">
+            <mat-header-cell *matHeaderCellDef> Data do Cadastro </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dataCad | date :'dd/MM/yy'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="deleteAction">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteVendedor(element)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

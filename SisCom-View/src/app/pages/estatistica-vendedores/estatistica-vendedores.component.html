@@ -1,0 +1,42 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Estatistica vendedores">
+    <form [formGroup]="filter" class="content__form">
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data inicial</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataInicio">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data final</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dataFim">
+            <mat-datepicker-toggle matSuffix [for]="picker1">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="filtrar()">Filtrar</button>
+    </form>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="vendedor">
+            <mat-header-cell *matHeaderCellDef> Vendedor </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qtdVendas">
+            <mat-header-cell *matHeaderCellDef> Quantidade vendas </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.qtdVendas }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vlrTotal">
+            <mat-header-cell *matHeaderCellDef> Valor total </mat-header-cell>
+            <mat-cell *matCellDef="let element"> $ {{element.vlrTotal }} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</app-page-template>

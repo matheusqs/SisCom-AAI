@@ -29,8 +29,11 @@ export class CadastrarClienteComponent implements OnInit {
   }
 
   public cadastrarCliente() {
+    const cliente = this.cliente.value as Cliente;
+    cliente.dataCad = new Date();
+
     this.clienteService
-      .cadastrarCliente(this.cliente.value as Cliente)
+      .cadastrarCliente(cliente)
       .subscribe((response) => {
         console.log(response);
       });

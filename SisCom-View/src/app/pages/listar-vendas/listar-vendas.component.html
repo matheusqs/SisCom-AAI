@@ -1,0 +1,71 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Listar vendas">
+    <form [formGroup]="filter" class="content__form">
+        <mat-form-field appearance="fill">
+            <mat-label>Cliente</mat-label>
+            <input type="text" matInput formControlName="cliente" [matAutocomplete]="auto1">
+            <mat-autocomplete autoActiveFirstOption #auto1="matAutocomplete">
+                <mat-option *ngFor="let option of clientes" [value]="option.nome">
+                    {{option.nome}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Vendedor</mat-label>
+            <input type="text" matInput formControlName="vendedor" [matAutocomplete]="auto">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of vendedores" [value]="option.nome">
+                    {{option.nome}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data inicial</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataInicio">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data final</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dataFim">
+            <mat-datepicker-toggle matSuffix [for]="picker1">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="filtrar()">Filtrar</button>
+    </form>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="cliente">
+            <mat-header-cell *matHeaderCellDef> Cliente </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.cliente.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vendedor">
+            <mat-header-cell *matHeaderCellDef> Vendedor </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.vendedor.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataVenda">
+            <mat-header-cell *matHeaderCellDef> Data da Venda </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dataVenda | date :'dd/MM/yy'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="deleteAction">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteCompra(element)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</app-page-template>

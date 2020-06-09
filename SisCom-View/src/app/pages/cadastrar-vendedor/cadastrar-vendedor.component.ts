@@ -28,8 +28,10 @@ export class CadastrarVendedorComponent implements OnInit {
   }
 
   public cadastrarVendedor() {
+    const vendedor = this.vendedor.value as Vendedor;
+    vendedor.dataCad = new Date();
     this.vendedorService
-      .cadastrarVendedor(this.vendedor.value as Vendedor)
+      .cadastrarVendedor(vendedor)
       .subscribe((response) => {
         console.log(response);
       });

@@ -10,12 +10,13 @@ import { ClienteService } from 'src/app/core/services/cliente.service';
 export class ListarClienteComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'position',
     'nome',
     'limiteCredito',
     'email',
     'cpf',
+    'dataCad',
     'telefone',
+    'deleteAction'
   ];
   dataSource = [];
 
@@ -26,9 +27,7 @@ export class ListarClienteComponent implements OnInit {
 
   public ngOnInit() {
     this.clienteService.getTodosClientes().subscribe((clientes) => {
-      this.dataSource = clientes.map((cliente, i) => {
-        return { position: i + 1, ...cliente };
-      });
+      this.dataSource = clientes;
     });
   }
 
@@ -36,4 +35,9 @@ export class ListarClienteComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  public deleteCliente(cliente) {
+    this.clienteService.deletarCliente(cliente.nome).subscribe(() => {
+      this.dataSource = this.dataSource.filter((pessoa) => pessoa.nome !== cliente.nome);
+    });
+  }
 }

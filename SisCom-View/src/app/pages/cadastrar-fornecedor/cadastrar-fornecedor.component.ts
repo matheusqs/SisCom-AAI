@@ -29,8 +29,11 @@ export class CadastrarFornecedorComponent implements OnInit {
   }
 
   public cadastrarFornecedor() {
+    const fornecedor = this.fornecedor.value as Fornecedor;
+    fornecedor.dataCad = new Date();
+
     this.fornecedorService
-      .cadastrarFornecedor(this.fornecedor.value as Fornecedor)
+      .cadastrarFornecedor(fornecedor)
       .subscribe((response) => {
         console.log(response);
       });

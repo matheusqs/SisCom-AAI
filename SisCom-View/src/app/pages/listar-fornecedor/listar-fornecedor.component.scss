@@ -18,3 +18,9 @@
     margin: 0;
   }
 }
+
+.mat-column-deleteAction {
+  flex: 0 0 40px;
+  display: flex;
+  justify-content: flex-end;
+}

@@ -1,0 +1,62 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Cadastrar Venda">
+    <section class="content">
+        <h4 class="content__subtitle">Preencha as informações da Venda:</h4>
+        <form [formGroup]="venda" class="content__form">
+            <mat-form-field appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input type="text" matInput formControlName="cliente" [matAutocomplete]="cliente">
+                <mat-autocomplete autoActiveFirstOption #cliente="matAutocomplete">
+                    <mat-option *ngFor="let cliente of clientes" [value]="cliente.nome">
+                        {{cliente.nome}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Vendedor</mat-label>
+                <input type="text" matInput formControlName="vendedor" [matAutocomplete]="vendedor">
+                <mat-autocomplete autoActiveFirstOption #vendedor="matAutocomplete">
+                    <mat-option *ngFor="let vendedor of vendedores" [value]="vendedor.nome">
+                        {{vendedor.nome}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <div formArrayName="vendaItens">
+                <h4>Item Venda</h4>
+                <button mat-flat-button color="primary" (click)="addItemVenda()">Adicionar Produto</button>
+
+                <div *ngFor="let vendaItem of vendaItens.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Produto</mat-label>
+                            <input type="text" matInput formControlName="produto" [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of produtos" [value]="option.nome">
+                                    {{option.nome}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>quantVenda</mat-label>
+                            <input matInput type="number" formControlName="quantVenda" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Forma de pagamento</mat-label>
+                <mat-select formControlName="formaPagto">
+                    <mat-option [value]="1">
+                        À vista
+                    </mat-option>
+                    <mat-option [value]="2">
+                        A prazo
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <button mat-flat-button class="content__button" color="primary" (click)="cadastrarVenda()">Cadastrar</button>
+    </section>
+</app-page-template>

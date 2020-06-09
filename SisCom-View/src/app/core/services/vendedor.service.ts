@@ -16,4 +16,17 @@ export class VendedorService {
   public getTodosVendedores() {
     return this.http.get<Vendedor[]>('http://localhost:8080/vendedores');
   }
+
+  public deletarVendedor(nome: string) {
+    return this.http.delete('http://localhost:8080/vendedor/' + nome);
+  }
+
+  public getEstatistica(dataInicio: Date, dataFim: Date) {
+    return this.http.get<any[]>(
+      'http://localhost:8080/vendas/vendedor/data-inicio/' +
+        new Date(dataInicio) +
+        '/data-fim/' +
+        new Date(dataFim)
+    );
+  }
 }

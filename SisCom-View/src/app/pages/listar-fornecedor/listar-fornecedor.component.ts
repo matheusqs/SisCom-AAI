@@ -10,12 +10,13 @@ import { FornecedorService } from 'src/app/core/services/fornecedor.service';
 export class ListarFornecedorComponent implements OnInit {
 
   displayedColumns: string[] = [
-    'position',
     'nome',
     'nomeContato',
     'email',
     'cnpj',
     'telefone',
+    'dataCad',
+    'deleteAction',
   ];
   dataSource = [];
 
@@ -26,13 +27,17 @@ export class ListarFornecedorComponent implements OnInit {
 
   public ngOnInit() {
     this.fornecedorService.getTodosFornecedores().subscribe((fornecedores) => {
-      this.dataSource = fornecedores.map((fornecedor, i) => {
-        return { position: i + 1, ...fornecedor };
-      });
+      this.dataSource = fornecedores;
     });
   }
 
   public goBack() {
     this.router.navigate(['/']);
+  }
+
+  public deleteFornecedor(fornecedor) {
+    this.fornecedorService.deletarFornecedor(fornecedor.nome).subscribe(() => {
+      this.dataSource = this.dataSource.filter((pessoa) => pessoa.nome !== fornecedor.nome);
+    });
   }
 }

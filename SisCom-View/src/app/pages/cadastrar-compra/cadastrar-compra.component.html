@@ -1,0 +1,41 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Cadastrar Compra">
+    <section class="content">
+        <h4 class="content__subtitle">Preencha as informações da compra:</h4>
+        <form [formGroup]="compra" class="content__form">
+            <mat-form-field appearance="fill">
+                <mat-label>Fornecedor</mat-label>
+                <input type="text" matInput formControlName="fornecedor" [matAutocomplete]="auto">
+                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of fornecedores" [value]="option.nome">
+                        {{option.nome}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+            <div formArrayName="compraItens">
+                <h4>Item Compra</h4>
+                <button mat-flat-button color="primary" (click)="addItemCompra()">Adicionar Produto</button>
+
+                <div *ngFor="let compraItem of compraItens.controls; let i=index">
+                    <div [formGroupName]="i">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Produto</mat-label>
+                            <input type="text" matInput formControlName="produto" [matAutocomplete]="auto">
+                            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                                <mat-option *ngFor="let option of produtos" [value]="option.nome">
+                                    {{option.nome}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill">
+                            <mat-label>quantCompra</mat-label>
+                            <input matInput type="number" formControlName="quantCompra" required>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+        <button mat-flat-button class="content__button" color="primary" (click)="cadastrarCompra()">Cadastrar</button>
+    </section>
+</app-page-template>

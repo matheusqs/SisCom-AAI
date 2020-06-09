@@ -1,0 +1,35 @@
+.container {
+  height: 100%;
+
+  & > * {
+    padding: 16px;
+  }
+}
+
+.container-content-header {
+  display: flex;
+  align-items: center;
+
+  &__button {
+    margin-right: 16px;
+  }
+
+  &__title {
+    margin: 0;
+  }
+}
+
+.mat-column-deleteAction {
+  flex: 0 0 40px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+form {
+  display: flex;
+  margin-bottom: 32px;
+
+  & > * {
+    margin-right: 16px;
+  }
+}

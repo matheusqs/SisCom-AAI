@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
 })
 export class ListarVendedorComponent implements OnInit {
   displayedColumns: string[] = [
-    'position',
     'nome',
     'meta',
     'email',
     'cpf',
     'telefone',
+    'dataCad',
+    'deleteAction',
   ];
-  dataSource = [];
+  dataSource: Vendedor[] = [];
 
   constructor(
     private vendedorService: VendedorService,
@@ -26,13 +27,17 @@ export class ListarVendedorComponent implements OnInit {
 
   public ngOnInit() {
     this.vendedorService.getTodosVendedores().subscribe((vendedores) => {
-      this.dataSource = vendedores.map((vendedor, i) => {
-        return { position: i + 1, ...vendedor };
-      });
+      this.dataSource = vendedores;
     });
   }
 
   public goBack() {
     this.router.navigate(['/']);
+  }
+
+  public deleteVendedor(vendedor) {
+    this.vendedorService.deletarVendedor(vendedor.nome).subscribe(() => {
+      this.dataSource = this.dataSource.filter((pessoa) => pessoa.nome !== vendedor.nome);
+    });
   }
 }

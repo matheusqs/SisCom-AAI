@@ -1,0 +1,35 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Cadastrar Produto">
+    <section class="content">
+        <h4 class="content__subtitle">Preencha as informações do produto:</h4>
+        <form [formGroup]="produto" class="content__form">
+            <mat-form-field appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome do produto" formControlName="nome" required>
+                <mat-error *ngIf="produto.controls.nome.invalid">Por favor preencha o nome.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Preço Unitário</mat-label>
+                <input matInput type="number" formControlName="precoUnitario" required>
+                <span matPrefix>$&nbsp;</span>
+                <span matSuffix>.00</span>
+                <mat-error *ngIf="produto.controls.precoUnitario.invalid">Por favor preencha o preço unitário.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Estoque Mínimo</mat-label>
+                <input matInput type="number" placeholder="50" formControlName="estoqueMinimo" required>
+                <mat-error *ngIf="produto.controls.estoqueMinimo.invalid">Por favor preencha o estoque minimo.
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Estoque Atual</mat-label>
+                <input matInput type="number" placeholder="70" formControlName="estoque" required>
+                <mat-error *ngIf="produto.controls.estoque.invalid">Por favor preencha o estoque.</mat-error>
+            </mat-form-field>
+        </form>
+        <button mat-flat-button class="content__button" color="primary" (click)="cadastrarProduto()">Cadastrar</button>
+    </section>
+</app-page-template>

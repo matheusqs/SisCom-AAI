@@ -1,0 +1,44 @@
+<app-page-template [goBack]="goBack.bind(this)" title="Listar produtos">
+    <form [formGroup]="form">
+        <mat-slide-toggle formControlName="toggle">Apenas produtos com estoque abaixo do mínimo.</mat-slide-toggle>
+    </form>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="precoUnitario">
+            <mat-header-cell *matHeaderCellDef> Preço Unit. </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.precoUnitario | currency:'CAD':'symbol-narrow':'0.2-2'}}
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estoque">
+            <mat-header-cell *matHeaderCellDef> Estoque </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.estoque}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estoqueMinimo">
+            <mat-header-cell *matHeaderCellDef> Estoque Mínimo </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.estoqueMinimo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dataCad">
+            <mat-header-cell *matHeaderCellDef> Data do Cadastro </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dataCad | date :'dd/MM/yy'}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="deleteAction">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteProduto(element)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</app-page-template>

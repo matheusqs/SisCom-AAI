@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.siscom</groupId>
-	<artifactId>SisCom</artifactId>
+	<artifactId>siscom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SisCom</name>
-	<description>Autoinstrucional</description>
+	<description>Sistema de compras</description>
 
 	<properties>
 		<java.version>1.8</java.version>
